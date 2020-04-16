@@ -1,9 +1,3 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;using System.Collections.Generic;using System.ComponentModel.DataAnnotations;
-using System.Linq;using System.Threading.Tasks;namespace project.api.EntityModels{    public class User :IdentityUser    {
-
-        [Required]
-        public string Name { get; set; }
-
-
-        public string Gender { get; set; }                             [DataType(DataType.Date)]        public DateTime Birth_date  {get; set; }                     public ICollection<Posts> Posts { get; set; }              public ICollection<Reply> reply { get; set; }               public ICollection<catguser> catgusers { get; set; }    }}
+﻿using System;using System.Collections.Generic;using System.ComponentModel.DataAnnotations;
+using System.Linq;using System.Threading.Tasks;namespace project.api.EntityModels
+{    public class User    {        //attribute user        [Key]        public Guid ID_User { get; set; }        [Required(ErrorMessage ="please enter User name")]        [DataType(DataType.Text)]        public string  User_Name{ get; set; }        [Required(ErrorMessage = "please enter Email")]        [DataType(DataType.EmailAddress)]        public string Email { get; set; }        [Required(ErrorMessage = "please enter Password")]        [DataType(DataType.Password)]        public string Password { get; set; }        [Required(ErrorMessage = "please enter Email")]        [DataType(DataType.EmailAddress)]        public int Confirmed_Email { get; set; }        [Required(ErrorMessage = "please enter phone")]        [DataType(DataType.PhoneNumber)]        public string Phone { get; set; }        [Required(ErrorMessage = "please enter phone")]        [DataType(DataType.PhoneNumber)]        public Guid Confirmed_Phone { get; set; }        [Required(ErrorMessage ="choose your Gender")]        public string Gender { get; set; }               public DateTime Date_Created { get; set; }        [Required(ErrorMessage = "please enter your BD")]        [DataType(DataType.Date)]        public DateTime Birth_date  {get; set; }                // one user can make many posts        public ICollection<Posts> Posts { get; set; }        //one user can make many replies        public ICollection<Reply> reply { get; set; }        //one user can choose many category        public ICollection<catguser> catgusers { get; set; }    }}

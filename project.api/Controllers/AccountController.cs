@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using project.api.Repository.UserR;
 using project.api.ViewModels;
 
 namespace project.api.Controllers
@@ -13,56 +15,29 @@ namespace project.api.Controllers
 
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> userManager;
-        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly IUserRepository repo;
+        private readonly IMapper mapp;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(IUserRepository repo , IMapper mapp)
         {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
+           
+            this.repo = repo;
+            this.mapp = mapp??
+            throw new ArgumentNullException(nameof(mapp));
         }
 
         [HttpGet]
-        public IActionResult register()
+        public ActionResult<IEnumerable<register>> GetUsers()
         {
-            return Ok();
+
+            var usersFromRepo = repo.GetUsers();
+
+
+            return Ok(mapp.Map<IEnumerable<register>>(usersFromRepo));
+
+
         }
 
 
-
-        [HttpPost]
-        public async Task <IActionResult> register(register model )
-        {
-            if(ModelState.IsValid)
-            {
-
-                var user = new IdentityUser { UserName = model.Email, Email = model.Email };
-                var result = await userManager.CreateAsync(user, model.Password);
-
-
-
-
-                if (result.Succeeded)
-                {
-
-                    await signInManager.SignInAsync(user, isPersistent: false);
-                    return Ok(result);
-
-
-
-                }
-
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-
-
-            }
-
-
-            return Ok(model);
-        }
     }
 }

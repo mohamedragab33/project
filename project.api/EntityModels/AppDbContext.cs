@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace project.api.EntityModels
 {
-    public class AppDbContext : IdentityDbContext<User>
+    public class AppDbContext :DbContext
     {
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -21,10 +21,10 @@ namespace project.api.EntityModels
         public DbSet<Reply> Reply { get; set; }
         public DbSet<catguser> catgusers { get; set; }
 
-    //     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    //{
-    //    base.OnModelCreating(modelBuilder);
-    //        modelBuilder.Seed();
-    //}
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //    modelBuilder.Seed();
+        //}
     } 
 }

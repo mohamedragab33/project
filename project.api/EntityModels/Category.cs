@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace project.api.EntityModels
+
 {
     public class Category
     {

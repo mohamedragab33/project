@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace project.api.EntityModels
+
 {
     public class Posts
     {
@@ -21,7 +22,7 @@ namespace project.api.EntityModels
         //one user to many posts
         public User user { get; set; }
         public Guid ID_User { get; set; }
-        
+        [ForeignKey(nameof(ID_User))]
         //many posrt toone category
         public Guid ID_Category { get; set; }
         [ForeignKey(nameof(ID_Category))]
