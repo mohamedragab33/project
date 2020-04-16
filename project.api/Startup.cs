@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +29,7 @@ namespace project.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers(setupAction => setupAction.ReturnHttpNotAcceptable = true);
-         //   services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //   services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
             services.AddDbContextPool<AppDbContext>(
@@ -36,7 +37,9 @@ namespace project.api
                options => options.UseSqlServer(Configuration.GetConnectionString("WizeDBConnection"))
 
                );
-          //  services.AddScoped<IUserRepository, UserRepository>();
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+
+            //  services.AddScoped<IUserRepository, UserRepository>();
             services.AddControllers();
            
         }
@@ -54,6 +57,8 @@ namespace project.api
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
+
 
             app.UseEndpoints(endpoints =>
             {

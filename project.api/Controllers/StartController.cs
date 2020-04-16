@@ -6,11 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace project.api.Controllers
 {
-    public class StartController : Controller
+    [ApiController]
+    public class StartController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+
+
+      
+
     }
 }

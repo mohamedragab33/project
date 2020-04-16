@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewData["Title"] = "signUp";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Anton|Nunito&display=swap" rel="stylesheet">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel='stylesheet' href='css/bootstrap.css' />
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+</head>
+<body style="background-image: url(images/2.jpg); background-repeat: no-repeat;background-size: cover;">
+    <script src="js/jquery-1.11.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Sing in  Form -->
+    <div class="container" style="background-color: transparent;">
+        <div class="signin-content">
+            <div class="row">
+                <div class="col-sm-6 leftSide">
+                    <div class="signin-image">
+                        <figure><img src="images/log.png" alt="sing up image"></figure>
+                    </div>
+                </div>
+                <div class="col-sm-6 rightSide">
+                    <div class="signin-form">
+                        <h5 class="text-center" style="margin-bottom: 8px; opacity: .8">WELCOME TO</h5>
+                        <h1 class="text-center" style="color:#00a8cc; margin: 0 auto; border-radius: 50px 50px 50px 50px; font-family: 'Nunito', sans-serif; font-size: 48px; font-weight: bold">W I S E</h1>
+
+                        <h5 class="text-center" style="color:#838484bd; margin: 25px 20px;">sign in to get in the moment updates on the thigs that interest you.</h5>
+                        <form method="POST" class="register-form" id="login-form">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="text" name="name" id="name" placeholder="Your Name" class="form-control" aria-label="..." />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="text" name="email" id="email" placeholder="Your email" class="form-control" aria-label="..." />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="password" name="pass" id="pass" placeholder="Password" class="form-control" aria-label="...">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" class="form-control" aria-label="...">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="text" name="phone" id="phone" placeholder="Enter phone" class="form-control" aria-label="...">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <h4 style="color: gray"> Birthday</h4>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <input type="date" name="Date" id="date" placeholder="Your birthday :" class="form-control" aria-label="..." />
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-6">
+                                            <label for="male">Male</label>
+
+                                            <input type="radio" id="male" name="gender" value="male">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label for="female">Female</label>
+                                            <input type="radio" id="female" name="gender" value="female">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <input type="submit" name="signin" style="margin-top: 0px;" id="signin" class="btn btn-primary" value="Sign Up" style="border-radius: 40px;" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <h5 class="text-center" id="signUpNow">I have an account ? <a href="login.html">LogIn Now</a></h5>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- JS -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
