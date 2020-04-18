@@ -19,11 +19,11 @@ namespace project.api.Controllers
         private readonly IUserRepository repo;
         private readonly IMapper mapp;
 
-        public AccountController(IUserRepository repo , IMapper mapp)
+        public AccountController(IUserRepository repo, IMapper mapp)
         {
-           
+
             this.repo = repo;
-            this.mapp = mapp??
+            this.mapp = mapp ??
             throw new ArgumentNullException(nameof(mapp));
         }
 
@@ -35,6 +35,27 @@ namespace project.api.Controllers
 
 
             return Ok(mapp.Map<IEnumerable<register>>(usersFromRepo));
+
+
+        }
+        
+        [HttpGet("{UserId:Guid}")]
+        public IActionResult GetUser(Guid UserId)
+        {
+
+
+            var userFromDto = repo.GetUser(UserId);
+            if (userFromDto == null)
+            {
+
+
+                return NotFound();
+
+            }
+
+
+
+            return Ok(mapp.Map<register>(userFromDto));
 
 
         }
@@ -54,7 +75,7 @@ namespace project.api.Controllers
 
             var userFordataBase = mapp.Map<User>(userForCreation);
             repo.AddUser(userFordataBase);
-            repo.Save();
+             repo.Save();
 
 
 
@@ -64,6 +85,7 @@ namespace project.api.Controllers
            
         }
 
+      
 
 
     }

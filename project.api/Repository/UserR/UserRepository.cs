@@ -31,12 +31,18 @@ namespace project.api.Repository.UserR
             //}
 
             _context.User.Add(user);
+           
         }
 
         public void DeleteUser(User user)
         {
-            throw new NotImplementedException();
-        }
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+            var us = _context.User.SingleOrDefault(x => x.ID_User== user.ID_User);
+            _context.User.Remove(us);
+                }
 
         public void Dispose()
         {
