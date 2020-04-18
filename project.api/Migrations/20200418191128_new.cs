@@ -27,9 +27,9 @@ namespace project.api.Migrations
                     User_Name = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
-                    Confirmed_Email = table.Column<int>(nullable: false),
+                    Confirmed_Email = table.Column<bool>(nullable: false),
                     Phone = table.Column<string>(nullable: false),
-                    Confirmed_Phone = table.Column<Guid>(nullable: false),
+                    Confirmed_Phone = table.Column<bool>(nullable: false),
                     Gender = table.Column<string>(nullable: false),
                     Date_Created = table.Column<DateTime>(nullable: false),
                     Birth_date = table.Column<DateTime>(nullable: false)

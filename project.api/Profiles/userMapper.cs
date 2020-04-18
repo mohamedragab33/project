@@ -13,6 +13,7 @@ namespace project.api.Profiles
         public userMapper()
         {
             CreateMap<User, register>();
+            CreateMap<UserForCreation, User>();
              
         }
 

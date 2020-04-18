@@ -10,21 +10,14 @@ namespace project.api.ViewModels
     {
 
         public Guid ID_User { get; set; }
-        [Required]
-        [RegularExpression(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$",
-        ErrorMessage = "Invalid email format")]
-        [EmailAddress]
-        public string Email { get; set; }
-
         public string User_Name { get; set; }
-        //[Required]
-        //[DataType(DataType.Password)]
-        //public string Password { get; set; }
-        //[Required]
-        //[DataType(DataType.Password)]
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Password { get; set; }
 
-        //[Display(Name = "Confirmed Password")]
-        //[Compare("Password", ErrorMessage = "The two passwords Don't match")]
-        //public string ConfirmPassword { get; set; }
+        public DateTime Birth_date { get; set; }
+        public string Gender { get; set; }
+
+
     }
 }

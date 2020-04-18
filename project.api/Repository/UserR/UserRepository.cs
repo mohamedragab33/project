@@ -12,7 +12,7 @@ namespace project.api.Repository.UserR
 
         public UserRepository(AppDbContext conn )
         {
-            _context = conn;
+            _context = conn ?? throw new ArgumentNullException(nameof(conn));
         }
 
         public void AddUser(User user)
@@ -25,10 +25,10 @@ namespace project.api.Repository.UserR
            
             user.ID_User = Guid.NewGuid();
 
-            foreach (var posts in user.Posts)
-            {
-                posts.ID_Post = Guid.NewGuid();
-            }
+            //foreach (var posts in user.Posts)
+            //{
+            //    posts.ID_Post = Guid.NewGuid();
+            //}
 
             _context.User.Add(user);
         }
@@ -40,14 +40,22 @@ namespace project.api.Repository.UserR
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+
         }
+
+        
 
         public IEnumerable<User> GetAllUsers(string mainCategory)
         {
             throw new NotImplementedException();
         }
-
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // dispose resources when needed
+            }
+        }
         public User GetUser(Guid userId)
         {
             if (userId == Guid.Empty)

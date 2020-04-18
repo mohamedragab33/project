@@ -10,7 +10,7 @@ using project.api.EntityModels;
 namespace project.api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200416173942_new")]
+    [Migration("20200418191128_new")]
     partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,13 +112,14 @@ namespace project.api.Migrations
                     b.Property<DateTime>("Birth_date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Confirmed_Email")
-                        .HasColumnType("int");
+                    b.Property<bool>("Confirmed_Email")
+                        .HasColumnType("bit");
 
-                    b.Property<Guid>("Confirmed_Phone")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<bool>("Confirmed_Phone")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("Date_Created")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")

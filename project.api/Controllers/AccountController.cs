@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using project.api.EntityModels;
 using project.api.Repository.UserR;
 using project.api.ViewModels;
 
@@ -26,7 +27,7 @@ namespace project.api.Controllers
             throw new ArgumentNullException(nameof(mapp));
         }
 
-        [HttpGet]
+        [HttpGet(Name = "GetAuthors")]
         public ActionResult<IEnumerable<register>> GetUsers()
         {
 
@@ -37,6 +38,32 @@ namespace project.api.Controllers
 
 
         }
+
+        [HttpPost]
+        public ActionResult<register> Create(UserForCreation userForCreation)
+        {
+
+
+            if (userForCreation==null)
+            {
+
+
+                return NotFound();
+            }
+
+
+            var userFordataBase = mapp.Map<User>(userForCreation);
+            repo.AddUser(userFordataBase);
+            repo.Save();
+
+
+
+            var userForReturn = mapp.Map<register>(userFordataBase);
+            return CreatedAtRoute("GetAuthors",userForReturn);
+
+           
+        }
+
 
 
     }

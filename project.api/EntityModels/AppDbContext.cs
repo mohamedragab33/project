@@ -21,10 +21,11 @@ namespace project.api.EntityModels
         public DbSet<Reply> Reply { get; set; }
         public DbSet<catguser> catgusers { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //    modelBuilder.Seed();
-        //}
-    } 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .Property(p => p.Date_Created)
+                .ValueGeneratedOnAdd();
+        }
+    }
 }
