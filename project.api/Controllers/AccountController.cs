@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using project.api.EntityModels;
@@ -40,6 +41,7 @@ namespace project.api.Controllers
         }
         
         [HttpGet("{UserId:Guid}")]
+        [Authorize]
         public IActionResult GetUser(Guid UserId)
         {
 
@@ -60,7 +62,8 @@ namespace project.api.Controllers
 
         }
 
-        [HttpPost]
+        [HttpPost] 
+
         public ActionResult<register> Create(UserForCreation userForCreation)
         {
 

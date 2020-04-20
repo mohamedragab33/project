@@ -42,6 +42,7 @@ namespace project.api
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAuthentication().AddCookie();
             //  services.AddScoped<IUserRepository, UserRepository>();
             services.AddControllers();
            
